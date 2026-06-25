@@ -1,0 +1,8 @@
+{
+  "name": "agora-form-backend",
+  "version": "1.0.0",
+  "description": "API serverless pour le formulaire AGOR@-EMES",
+  "dependencies": {
+    "@vercel/blob": "^0.23.0"
+  }
+}

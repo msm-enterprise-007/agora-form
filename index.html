@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AGOR@-EMES | Demande d'accès</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        :root {
+            --primary: #1e3a8a;
+            --primary-light: #2563eb;
+            --success: #22c55e;
+            --danger: #ef4444;
+            --gray-50: #f8fafc;
+            --gray-100: #f1f5f9;
+            --gray-200: #e2e8f0;
+            --gray-600: #475569;
+            --gray-800: #1e293b;
+            --radius-card: 24px;
+            --radius-input: 14px;
+            --shadow: 0 20px 35px -8px rgba(0, 0, 0, 0.05), 0 4px 10px -4px rgba(0, 0, 0, 0.02);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--gray-50);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem;
+            color: var(--gray-800);
+        }
+
+        .container {
+            width: 100%;
+            max-width: 720px;
+        }
+
+        .card {
+            background: white;
+            border-radius: var(--radius-card);
+            box-shadow: var(--shadow);
+            padding: 2.25rem 2rem;
+            border: 1px solid var(--gray-200);
+        }
+
+        .logo-area {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 2rem;
+        }
+
+        .logo {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--primary);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 24px;
+            box-shadow: 0 8px 16px -6px rgba(30, 58, 138, 0.25);
+        }
+
+        .logo-text {
+            font-size: 24px;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            color: #0b1e3a;
+        }
+
+        .logo-sub {
+            font-size: 12px;
+            color: var(--gray-600);
+            margin-top: 2px;
+        }
+
+        h1 {
+            font-size: 28px;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            margin-bottom: 0.5rem;
+            text-align: center;
+        }
+
+        .subhead {
+            color: var(--gray-600);
+            font-size: 0.95rem;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .steps {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 2rem;
+            background: var(--gray-100);
+            padding: 0.75rem 1.5rem;
+            border-radius: 40px;
+        }
+
+        .step {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--gray-600);
+            font-size: 0.9rem;
+        }
+
+        .step.active {
+            color: var(--primary);
+            font-weight: 500;
+        }
+
+        .step i {
+            font-size: 1.1rem;
+        }
+
+        .form-section {
+            margin-bottom: 2rem;
+        }
+
+        .section-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 1.25rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--gray-800);
+            border-bottom: 1px solid var(--gray-200);
+            padding-bottom: 0.5rem;
+        }
+
+        .section-title i {
+            color: var(--primary-light);
+        }
+
+        .form-row {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.25rem;
+            flex-wrap: wrap;
+        }
+
+        .form-group {
+            flex: 1 1 200px;
+            margin-bottom: 0.5rem;
+        }
+
+        .form-group.full-width {
+            flex: 1 1 100%;
+        }
+
+        label {
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin-bottom: 0.4rem;
+            color: var(--gray-800);
+        }
+
+        .required {
+            color: var(--danger);
+            margin-left: 4px;
+            font-size: 0.8rem;
+        }
+
+        .optional {
+            color: var(--gray-600);
+            font-weight: 400;
+            margin-left: 6px;
+            font-size: 0.8rem;
+        }
+
+        .input-icon-wrapper {
+            position: relative;
+        }
+
+        .input-icon {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #94a3b8;
+            font-size: 1rem;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 0.8rem 1rem 0.8rem 2.5rem;
+            background: white;
+            border: 1.5px solid var(--gray-200);
+            border-radius: var(--radius-input);
+            font-size: 0.95rem;
+            font-family: 'Inter', sans-serif;
+            color: var(--gray-800);
+            transition: border 0.2s, box-shadow 0.2s;
+        }
+
+        textarea {
+            padding-left: 1rem;
+            min-height: 80px;
+            resize: vertical;
+        }
+
+        select {
+            padding-left: 2.5rem;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23475569' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 1rem center;
+            background-size: 1rem;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: var(--primary-light);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+
+        .device-list {
+            background: var(--gray-50);
+            border-radius: 16px;
+            padding: 1.25rem;
+            border: 1px solid var(--gray-200);
+            margin-bottom: 0.5rem;
+        }
+
+        .device-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 1.25rem;
+            flex-wrap: wrap;
+        }
+
+        .device-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .device-label {
+            min-width: 130px;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding-top: 0.5rem;
+        }
+
+        .device-label i {
+            width: 20px;
+            color: var(--primary);
+        }
+
+        .device-input {
+            flex: 1;
+            min-width: 220px;
+        }
+
+        .device-note {
+            margin-top: 0.3rem;
+            font-size: 0.75rem;
+            color: var(--gray-600);
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        .add-device {
+            margin-top: 1rem;
+            text-align: right;
+        }
+
+        .add-device a {
+            color: var(--primary);
+            font-size: 0.9rem;
+            text-decoration: none;
+            font-weight: 500;
+            cursor: pointer;
+        }
+
+        .mac-instruction {
+            background: #e6f0ff;
+            border-radius: 16px;
+            padding: 1rem 1.25rem;
+            margin: 1.5rem 0;
+            border-left: 4px solid var(--primary);
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+        }
+
+        .mac-instruction i {
+            color: var(--primary);
+            font-size: 1.25rem;
+            margin-top: 0.1rem;
+        }
+
+        .mac-instruction div {
+            flex: 1;
+        }
+
+        .mac-instruction strong {
+            font-size: 0.95rem;
+            display: block;
+            margin-bottom: 0.25rem;
+        }
+
+        .mac-instruction p {
+            font-size: 0.9rem;
+            color: var(--gray-800);
+            margin-bottom: 0.5rem;
+            text-align: justify;
+        }
+
+        .mac-instruction ul {
+            margin-top: 0.5rem;
+            padding-left: 1.25rem;
+            font-size: 0.85rem;
+            color: var(--gray-600);
+            text-align: justify;
+        }
+
+        .mac-instruction li {
+            margin-bottom: 0.25rem;
+        }
+
+        .consent-box {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            margin: 1.5rem 0 1.75rem;
+            padding: 1rem 1.25rem;
+            background: var(--gray-50);
+            border-radius: 16px;
+            border: 1px solid var(--gray-200);
+        }
+
+        .consent-box input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            accent-color: var(--primary);
+            margin-top: 2px;
+            flex-shrink: 0;
+        }
+
+        .consent-text {
+            font-size: 0.9rem;
+            color: var(--gray-600);
+            line-height: 1.5;
+            text-align: justify;
+        }
+
+        .consent-text a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 0.9rem;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 40px;
+            font-size: 1rem;
+            font-weight: 600;
+            font-family: 'Inter', sans-serif;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            box-shadow: 0 8px 20px -6px rgba(30, 58, 138, 0.3);
+            transition: background 0.2s, transform 0.1s;
+        }
+
+        .btn:hover {
+            background: var(--primary-light);
+        }
+
+        .btn:active {
+            transform: scale(0.98);
+        }
+
+        .btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .links {
+            margin-top: 1.5rem;
+            text-align: center;
+            font-size: 0.9rem;
+            color: var(--gray-600);
+        }
+
+        .links a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            margin-left: 0.25rem;
+        }
+
+        .simulation-bar {
+            margin-top: 1.75rem;
+            padding-top: 1rem;
+            border-top: 1px dashed var(--gray-200);
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .simulation-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 0.8rem;
+            color: var(--gray-600);
+        }
+
+        .simulation-label {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-weight: 500;
+        }
+
+        .role-links {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .role-links a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.85rem;
+        }
+
+        .error-message {
+            color: var(--danger);
+            font-size: 0.85rem;
+            margin-top: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .success-message {
+            color: var(--success);
+            font-size: 0.85rem;
+            margin-top: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        /* Spinner */
+        .spinner {
+            display: inline-block;
+            width: 18px;
+            height: 18px;
+            border: 3px solid rgba(255,255,255,0.3);
+            border-radius: 50%;
+            border-top-color: #fff;
+            animation: spin 0.8s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        @media (max-width: 640px) {
+            .card {
+                padding: 1.75rem 1.25rem;
+            }
+            h1 {
+                font-size: 24px;
+            }
+            .steps {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.5rem;
+            }
+            .device-item {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+            .device-label {
+                min-width: auto;
+                padding-top: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="card">
+        <!-- Logo -->
+        <div class="logo-area">
+            <div class="logo">
+                <div class="logo-icon">A</div>
+                <div>
+                    <div class="logo-text">AGOR@-EMES</div>
+                    <div class="logo-sub">Intranet • Gestion des présences</div>
+                </div>
+            </div>
+        </div>
+
+        <h1>Demande d'accès</h1>
+        <div class="subhead">Stage académique ou Formation continue</div>
+
+        <!-- Étapes -->
+        <div class="steps">
+            <span class="step active"><i class="fas fa-user-plus"></i> 1. Informations</span>
+            <span class="step"><i class="fas fa-microchip"></i> 2. Appareils</span>
+            <span class="step"><i class="fas fa-check-circle"></i> 3. Validation</span>
+        </div>
+
+        <form id="demandeForm">
+            <!-- Section 1 : Informations personnelles -->
+            <div class="form-section">
+                <div class="section-title">
+                    <i class="fas fa-user-circle"></i>
+                    <span>Votre identité</span>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="nom">Nom <span class="required">*</span></label>
+                        <div class="input-icon-wrapper">
+                            <i class="fas fa-user input-icon"></i>
+                            <input type="text" id="nom" placeholder="Dupont" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="prenom">Prénom <span class="required">*</span></label>
+                        <div class="input-icon-wrapper">
+                            <i class="fas fa-user input-icon"></i>
+                            <input type="text" id="prenom" placeholder="Jean" required>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group full-width">
+                        <label for="email">Email <span class="required">*</span></label>
+                        <div class="input-icon-wrapper">
+                            <i class="fas fa-envelope input-icon"></i>
+                            <input type="email" id="email" placeholder="prenom.nom@example.com" required>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="typeDemande">Type de demande <span class="required">*</span></label>
+                        <div class="input-icon-wrapper">
+                            <i class="fas fa-graduation-cap input-icon"></i>
+                            <select id="typeDemande" required>
+                                <option value="">Sélectionnez...</option>
+                                <option value="stage">Stage académique</option>
+                                <option value="formation">Formation continue (Justus)</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="niveau">Niveau / Formation</label>
+                        <div class="input-icon-wrapper">
+                            <i class="fas fa-layer-group input-icon"></i>
+                            <input type="text" id="niveau" placeholder="ex: Licence 3 IG">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group full-width">
+                        <label for="motivation">Message de motivation <span class="optional">(optionnel)</span></label>
+                        <textarea id="motivation" placeholder="Précisez votre école, la durée souhaitée..."></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section 2 : Appareils (MAC) -->
+            <div class="form-section">
+                <div class="section-title">
+                    <i class="fas fa-microchip"></i>
+                    <span>Appareils pour le pointage automatique</span>
+                </div>
+                <div class="device-list">
+                    <!-- Téléphone OBLIGATOIRE -->
+                    <div class="device-item">
+                        <span class="device-label"><i class="fas fa-mobile-alt"></i> Téléphone portable <span class="required">*</span></span>
+                        <div class="device-input">
+                            <div class="input-icon-wrapper">
+                                <i class="fas fa-bluetooth input-icon"></i>
+                                <input type="text" id="macTel" placeholder="AA:BB:CC:DD:EE:FF" pattern="^([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})$" required>
+                            </div>
+                            <div class="device-note">
+                                <i class="fas fa-info-circle"></i>
+                                <span>Obligatoire – Le téléphone reste allumé même si le PC est en veille.</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- PC OPTIONNEL -->
+                    <div class="device-item">
+                        <span class="device-label"><i class="fas fa-laptop"></i> PC portable <span class="optional">(optionnel)</span></span>
+                        <div class="device-input">
+                            <div class="input-icon-wrapper">
+                                <i class="fas fa-network-wired input-icon"></i>
+                                <input type="text" id="macPc" placeholder="AA:BB:CC:DD:EE:FF" pattern="^([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})$">
+                            </div>
+                            <div class="device-note">
+                                <i class="fas fa-info-circle"></i>
+                                <span>Optionnel – Peut être en veille, le téléphone est prioritaire.</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="add-device">
+                        <a href="#" id="addDeviceLink"><i class="fas fa-plus-circle"></i> Ajouter un autre appareil</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Instructions désactivation MAC aléatoire -->
+            <div class="mac-instruction">
+                <i class="fas fa-shield-alt"></i>
+                <div>
+                    <strong>Important : Désactivez l'adresse MAC aléatoire</strong>
+                    <p>Pour que le pointage fonctionne, votre appareil doit utiliser son adresse MAC réelle sur le réseau Wi‑Fi "EMES".</p>
+                    <ul>
+                        <li><strong>iPhone/iPad :</strong> Réglages → Wi‑Fi → (i) à côté de "EMES" → Désactiver "Adresse privée".</li>
+                        <li><strong>Android :</strong> Paramètres → Wi‑Fi → ⚙️ (roue dentée) → "Type d'adresse MAC" → "Adresse MAC du téléphone".</li>
+                        <li><strong>Windows / macOS :</strong> L'adresse MAC est généralement fixe.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Consentement RGPD -->
+            <div class="consent-box">
+                <input type="checkbox" id="consentement" required>
+                <label for="consentement" class="consent-text">
+                    J'accepte que mes données personnelles (nom, email, adresses MAC) soient collectées et traitées par EMES Sarl conformément à la <a href="#">politique de confidentialité</a>, dans le seul but du suivi de présence et de la gestion des tâches. Conformément à la loi béninoise n°2017-20, je peux retirer mon consentement à tout moment.
+                </label>
+            </div>
+
+            <button type="submit" id="submitBtn" class="btn">
+                <i class="fas fa-paper-plane" id="btnIcon"></i>
+                <span id="btnText">Envoyer la demande</span>
+            </button>
+
+            <div id="formFeedback" class="hidden"></div>
+        </form>
+
+        <div class="links">
+            Déjà un compte ? <a href="login.html">Se connecter</a>
+        </div>
+
+        <!-- Barre de simulation -->
+        <div class="simulation-bar">
+            <div class="simulation-row">
+                <span class="simulation-label"><i class="fas fa-flask"></i> Simulation des rôles</span>
+            </div>
+            <div class="role-links">
+                <a href="stagiaire/dashboard.html"><i class="fas fa-user-graduate"></i> Stagiaire</a>
+                <a href="admin/dashboard.html"><i class="fas fa-user-shield"></i> Admin</a>
+                <a href="apprenant/dashboard.html"><i class="fas fa-user"></i> Apprenant</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    (function() {
+        const form = document.getElementById('demandeForm');
+        const submitBtn = document.getElementById('submitBtn');
+        const btnText = document.getElementById('btnText');
+        const btnIcon = document.getElementById('btnIcon');
+        const feedback = document.getElementById('formFeedback');
+
+        // Références pour la validation
+        const nom = document.getElementById('nom');
+        const prenom = document.getElementById('prenom');
+        const email = document.getElementById('email');
+        const typeDemande = document.getElementById('typeDemande');
+        const macTel = document.getElementById('macTel');
+        const macPc = document.getElementById('macPc');
+        const consent = document.getElementById('consentement');
+
+        function showFeedback(message, type = 'error') {
+            feedback.className = type === 'error' ? 'error-message' : 'success-message';
+            feedback.innerHTML = `<i class="fas fa-${type === 'error' ? 'exclamation-circle' : 'check-circle'}"></i> ${message}`;
+            feedback.classList.remove('hidden');
+        }
+
+        function resetFeedback() {
+            feedback.classList.add('hidden');
+        }
+
+        function setLoading(loading) {
+            if (loading) {
+                submitBtn.disabled = true;
+                btnText.innerHTML = 'Envoi en cours...';
+                btnIcon.innerHTML = '<span class="spinner"></span>';
+            } else {
+                submitBtn.disabled = false;
+                btnText.innerHTML = 'Envoyer la demande';
+                btnIcon.innerHTML = '<i class="fas fa-paper-plane"></i>';
+            }
+        }
+
+        // Soumission du formulaire
+        form.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            resetFeedback();
+
+            // Validation rapide côté client (redondante mais utile)
+            if (!nom.value.trim()) {
+                showFeedback('Le nom est requis.', 'error');
+                nom.focus();
+                return;
+            }
+            if (!prenom.value.trim()) {
+                showFeedback('Le prénom est requis.', 'error');
+                prenom.focus();
+                return;
+            }
+            if (!email.value.trim()) {
+                showFeedback('L\'email est requis.', 'error');
+                email.focus();
+                return;
+            }
+            if (!typeDemande.value) {
+                showFeedback('Veuillez sélectionner un type de demande.', 'error');
+                typeDemande.focus();
+                return;
+            }
+            if (!consent.checked) {
+                showFeedback('Vous devez accepter le traitement des données.', 'error');
+                consent.focus();
+                return;
+            }
+            const macTelVal = macTel.value.trim();
+            const macRegex = /^([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})$/;
+            if (!macTelVal) {
+                showFeedback('L\'adresse MAC du téléphone est obligatoire.', 'error');
+                macTel.focus();
+                return;
+            }
+            if (!macRegex.test(macTelVal)) {
+                showFeedback('Format MAC téléphone invalide. Exemple: AA:BB:CC:DD:EE:FF', 'error');
+                macTel.focus();
+                return;
+            }
+            const macPcVal = macPc.value.trim();
+            if (macPcVal && !macRegex.test(macPcVal)) {
+                showFeedback('Format MAC PC invalide.', 'error');
+                macPc.focus();
+                return;
+            }
+
+            // Construction du payload
+            const payload = {
+                nom: nom.value.trim(),
+                prenom: prenom.value.trim(),
+                email: email.value.trim(),
+                typeDemande: typeDemande.value,
+                niveau: document.getElementById('niveau').value.trim(),
+                motivation: document.getElementById('motivation').value.trim(),
+                macTel: macTelVal,
+                macPc: macPcVal,
+                consentement: true
+            };
+
+            setLoading(true);
+
+            try {
+                const response = await fetch('/api/submit', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(payload)
+                });
+
+                const result = await response.json();
+
+                if (!response.ok) {
+                    throw new Error(result.error || 'Erreur inconnue');
+                }
+
+                // Succès
+                showFeedback(result.message || 'Demande envoyée avec succès !', 'success');
+                form.reset();
+                // Redirection après 2s
+                setTimeout(() => {
+                    window.location.href = 'login.html';
+                }, 2000);
+
+            } catch (err) {
+                showFeedback(err.message || 'Une erreur est survenue. Veuillez réessayer.', 'error');
+            } finally {
+                setLoading(false);
+            }
+        });
+
+        // Lien "Ajouter un autre appareil"
+        document.getElementById('addDeviceLink').addEventListener('click', function(e) {
+            e.preventDefault();
+            alert('Simulation : Vous pouvez ajouter un autre appareil (interface réelle avec champ supplémentaire).');
+        });
+
+    })();
+</script>
+
+</body>
+</html>

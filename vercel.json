@@ -1,0 +1,13 @@
+{
+  "functions": {
+    "api/*.js": {
+      "runtime": "nodejs18.x"
+    }
+  },
+  "rewrites": [
+    { "source": "/(.*)", "destination": "/index.html" }
+  ],
+  "env": {
+    "BLOB_READ_WRITE_TOKEN": "@blob-read-write-token"
+  }
+}
